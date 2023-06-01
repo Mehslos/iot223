@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   scr-1:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       max-parallel: 256
       fail-fast: false
