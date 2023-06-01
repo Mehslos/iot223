@@ -46,7 +46,7 @@ rn = ''.join(random.choices(string.ascii_lowercase + string.digits, k = S))
 names=(rand_name+rn)
 main2 = ''.join((secrets.choice(string.ascii_letters + string.digits + string.punctuation) for i in range(random.randint(8,12))))
 
-driver.get('https://www.minitex.co/?r=85222')
+driver.get('https://ex.rex24.store/ref288819')
 time.sleep(15)
 driver.find_element(by=By.XPATH, value='//*[@id="ProfileBlock"]/div[1]/div/div[1]/div/div[3]/div').click()
 time.sleep(10)
